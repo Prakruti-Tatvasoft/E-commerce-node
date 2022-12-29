@@ -4,7 +4,7 @@ const addToCart = async(req, res) => {
     const { productId } = req.body
     const { _id: userId} = req.user
 
-    const isExist = await Cart.findOne({ productId })
+    const isExist = await Cart.findOne({ productId, userId })
     let message, status
     if(!isExist) {
         await Cart.create({ productId, userId })
